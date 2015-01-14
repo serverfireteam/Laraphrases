@@ -16,19 +16,28 @@ class LaraphraseController extends BaseController {
         {
             $id       = Input::get('id');
             $newValue = Input::get('newValue');
-
-            $record = $class::find($id);
-
+            
+            $record = $class::where('aprove','1')->find($id);
+            
             if ( is_null($record) ) return Response::json(['status' => 'error', 'message' => 'Phrase is not exists!'], 403);
-
-            $record->fillable([$attribute]);
-
-            $record->{$attribute} = $newValue;
-            $record->save();
+            
+            $record->create(['locale'=>'en','key'=>$record['key'],'value'=>$newValue]);
 
             return Response::json($record->toJson());
         }
         return Response::json(['status' => 'error', 'message' => 'Attribute is not in white list!'], 403);
+    }
+    
+    public function approve()
+    {
+        
+        $id       = Input::get('id');
+        $key      = Input::get('key');
+        
+        Phrase::where('aprove', 1)->where('key', $key)->update(array('aprove' => 0));
+        Phrase::where('id', $id)->update(array('aprove' => 1));
+        
+        return 'true';
     }
 
 }
