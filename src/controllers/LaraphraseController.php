@@ -39,5 +39,14 @@ class LaraphraseController extends BaseController {
         
         return 'true';
     }
+    
+    public function delete()
+    {
+        
+        $id       = Input::get('id');        
+        Phrase::find($id)->delete();
+        
+        return 'true';
+    }
 
 }
