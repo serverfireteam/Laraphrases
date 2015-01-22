@@ -10,10 +10,15 @@ var laraphrases = function() {
     var timer_status = {}
 
     $('.laraphrase').on('DOMNodeInserted DOMNodeRemoved DOMCharacterDataModified', function(e){
+        
         var t = $(this),
             url = t.attr('data-url'),
             newValue = t.html();
-
+        
+        // first clean up the comment 
+        var re = /<span class="annotator-hl">(.+?)<\/span>/g;
+        newValue = newValue.replace(re, '$1');
+        
         if (trigger_binded_events_for_phrasable_class == 1){
 
             clearTimeout(timer[url]);

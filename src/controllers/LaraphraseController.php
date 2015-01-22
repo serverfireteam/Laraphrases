@@ -21,7 +21,7 @@ class LaraphraseController extends BaseController {
             
             if ( is_null($record) ) return Response::json(['status' => 'error', 'message' => 'Phrase is not exists!'], 403);
             
-            $record->create(['locale'=>'en','key'=>$record['key'],'value'=>$newValue]);
+            $record->firstOrCreate(['locale'=>'en','key'=>$record['key'],'value'=>$newValue]);
 
             return Response::json($record->toJson());
         }
