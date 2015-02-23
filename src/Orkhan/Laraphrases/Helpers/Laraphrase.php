@@ -38,10 +38,10 @@ class Laraphrase {
      */
     private static function getPhrase($args)
     {
+
         $key = $value = $args[0];
         if ( isset($args[1]) ) $value = $args[1];
         $term = Phrase::findOrCreateByKey($key, $value);
-
         return self::getEditable($term);
     }
 
@@ -53,7 +53,7 @@ class Laraphrase {
      * @return string
      */
     private static function getModelPhrase($args)
-    {
+    {   
         return self::getEditable($args[0], $args[1]);
     }
 

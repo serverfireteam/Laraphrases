@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Routing\Controller as BaseController;
 class LaraphraseController extends BaseController {
 
     /**

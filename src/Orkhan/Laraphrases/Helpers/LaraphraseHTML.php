@@ -16,7 +16,7 @@ trait LaraphraseHTML {
     {
         $class    = ['laraphrase'];
         $editable = "false";
-
+        
         if ( self::canEditPhrase() )
         {
             $class[] = 'laraphrase_editable';

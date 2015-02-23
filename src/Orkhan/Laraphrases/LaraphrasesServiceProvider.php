@@ -18,8 +18,7 @@ class LaraphrasesServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('orkhan/laraphrases');
-
+		
         include __DIR__.'/../../routes.php';
 	}
 

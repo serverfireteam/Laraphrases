@@ -2,7 +2,7 @@
 
 return [
     'can_edit' => function() {
-        return true; // Your custom filter: Sentry::check() && Sentry::getUser()->hasAccess('laraphrases') ? true : false
+        RoomsHotels\Http\Controllers\Dedit\AuthManagerController::check();
     },
     'is_editable_mode_on' => function() {
         return isset($_COOKIE['editing_mode']) && $_COOKIE['editing_mode'] === "false" ? false : true;

@@ -11,7 +11,7 @@ trait LaraphraseSecurity {
      */
     public static function canEditPhrase()
     {
-        $can_edit = Config::get('laraphrases::phrase.can_edit');
+        $can_edit = Config::get('inlineEdit.can_edit');
         return $can_edit();
     }
 
@@ -22,7 +22,7 @@ trait LaraphraseSecurity {
      */
     public static function isEditableModeOn()
     {
-        $is_editable_mode_on = Config::get('laraphrases::phrase.is_editable_mode_on');
+        $is_editable_mode_on = Config::get('inlineEdit.is_editable_mode_on');
         return $is_editable_mode_on();
     }
 
@@ -36,7 +36,7 @@ trait LaraphraseSecurity {
      */
     public static function isInWhiteList($class, $attribute)
     {
-        return in_array($attribute, Config::get('laraphrases::phrase.white_list.'.$class));
+        return in_array($attribute, Config::get('inlineEdit.white_list.'.$class));
     }
 
 }
